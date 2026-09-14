@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="text-align: center; margin-bottom: 3rem;">
+    <h2 style="font-size: 2.5rem; color: #1e293b; margin-bottom: 0.5rem;">Learn Coding Step by Step</h2>
+    <p style="font-size: 1.1rem; color: #64748b;">Explore curated Python concepts, Flask workflows, and web challenges.
+    </p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+    {% for mod_id, mod in modules.items() %}
+    <div style="background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+        <h3 style="color: #4f46e5; margin-top: 0;">{{ mod.title }}</h3>
+        <p style="color: #64748b; font-size: 0.95rem;">{{ mod.description }}</p>
+        <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem;">
+            {% for lesson in mod.lessons %}
+            <li style="margin-bottom: 0.5rem;">
+                <a href="{{ url_for('lesson', module_id=mod_id, lesson_id=lesson.id) }}"
+                    style="color: #2563eb; text-decoration: none; font-weight: 500;">
+                    {{ lesson.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

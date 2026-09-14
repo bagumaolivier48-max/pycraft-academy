@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    <h2 style="color: #1e293b; margin-top: 0;">Interactive Python Playground</h2>
+    <p style="color: #64748b;">Type your Python code snippet below and submit it to test your code logic instantly on
+        the platform.</p>
+
+    <form method="POST">
+        <textarea name="code" rows="6"
+            style="width: 100%; font-family: monospace; font-size: 1rem; padding: 1rem; border-radius: 6px; border: 1px solid #cbd5e1; background: #f8fafc;"
+            placeholder="# Write code here, e.g., print('Hello World')">{{ user_code }}</textarea>
+        <br>
+        <button type="submit"
+            style="margin-top: 1rem; background: #10b981; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: bold; cursor: pointer;">Run
+            Code 🚀</button>
+    </form>
+
+    {% if output %}
+    <div style="margin-top: 2rem;">
+        <h4 style="margin-bottom: 0.5rem; color: #1e293b;">Execution Output:</h4>
+        <pre
+            style="background: #0f172a; color: #34d399; padding: 1rem; border-radius: 6px; font-family: monospace;">{{ output }}</pre>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
